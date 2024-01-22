@@ -44,7 +44,7 @@ namespace seneca {
 		int minutes = (startTime % 3600) / 60;
 		int seconds = startTime % 60;
 
-		if (descEvent && descEvent[0] != '\0')
+		if (descEvent[0] != '\0')
 		{
 			std::cout << std::setfill('0') << std::setw(2) << hours << ":"
 				<< std::setfill('0') << std::setw(2) << minutes << ":"
