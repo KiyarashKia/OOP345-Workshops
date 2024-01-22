@@ -28,7 +28,7 @@ Date : 01/21/2024
 
 namespace seneca {
 
-	unsigned int g_sysClock = 0;
+	unsigned int g_sysClock = 1;
 
 	Event::Event() {
 		startTime = g_sysClock;
@@ -73,7 +73,7 @@ namespace seneca {
 
 
 	void Event::display() {
-		static int counter = 0;
+		static int counter = 1;
 		std::cout << std::setw(2) << std::setfill(' ') << counter << ". ";
 
 		int hours = startTime / 3600;
