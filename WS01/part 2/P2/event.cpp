@@ -15,7 +15,7 @@ Student : Kiarash Kia
 Student ID: 108688235
 Email: kkia2@myseneca.ca
 Workshop 1 -
-Date : 01/21/2024
+Date : 01/22/2024
  */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -50,7 +50,7 @@ namespace seneca {
 	Event& Event::operator=(const Event& other) {
 		if (this != &other) 
 		{
-			delete descEvent;
+			delete[] descEvent;
 			
 			if (other.descEvent)
 			{

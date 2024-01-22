@@ -1,0 +1,64 @@
+/***********************************************************************
+// OOP345 Workshop # 1 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 1 -
+Date : 01/22/2024
+ */
+
+
+This workshop was a nice review, and at the same time properly facing some new stuff for the first time.
+To begin with the definitions of Internal and External linkage in this workshop and the way I thought of using them,
+I can start with the variable g_sysclock which I declared as an extern in my header file. As I was instructed to do and 
+it seemed to be using in different component of the program, therefore in header file I declared it as an extern,
+and so it could be used across the files. To mention in my code, in my event.h :
+extern unsigned int g_sysClock;
+
+System clock is actually just declared there but as we needed to use it in other component, so the definition is in another
+file. Actually this helps our program to be synchronized in terms of the time reference. I did not use the internal linkage here,
+but the difference would be that internal linkage refers to an entity which is invisible outside of its scope but can be accessible 
+in the unit by other scopes. to be more clear, I know as it restricts the scope of a variable or function to the file they are declared in.
+
+Regarding static variables, I used one in my display function in event.cpp. That is basically my counter which was supposed to help
+the structure of displaying the menu and items/events. The reason behind this is mainly having control over the initialization and tracking the 
+state inside the function. As we needed to keep track of the number displayed and so we expect it to act normally as we predict
+and increments after each display, therefore I had the chance to use the static variable.
+void Event::display() {
+		static int counter = 1;
+		std::cout << std::setw(2) << std::setfill(' ') << counter << ". ";
+
+		int hours = startTime / 3600;
+		int minutes = (startTime % 3600) / 60;
+		int seconds = startTime % 60;
+
+		if (descEvent && descEvent[0] != '\0')
+		{
+			std::cout << std::setfill('0') << std::setw(2) << hours << ":"
+				<< std::setfill('0') << std::setw(2) << minutes << ":"
+				<< std::setfill('0') << std::setw(2) << seconds << " => "
+				<< descEvent << std::endl;
+		}
+		else {
+			std::cout << "| No Event |" << std::endl;
+		}
+
+		counter++;
+	}
+
+
+Lastly, writing about my event upgrading. I thought of implementing rule of three for this. So by having copy constructor
+we could have the ability to manage the creation new instances with unique description.
+By having the copy assignment operator is responsible for prevention of self assignment and manage memory allocation to 
+store the copied description. Also a destructor to properly deallocate memory whenever needed properly to avoid leaks and
+managing memory efficiently.

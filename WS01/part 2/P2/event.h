@@ -15,7 +15,7 @@ Student : Kiarash Kia
 Student ID: 108688235
 Email: kkia2@myseneca.ca
 Workshop 1 -
-Date : 01/21/2024
+Date : 01/22/2024
  */
 
 #ifndef SENECA_EVENT_H
