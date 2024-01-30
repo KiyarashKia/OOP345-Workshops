@@ -91,6 +91,25 @@ namespace seneca {
 			return *this;
 		}
 
+		StringSet::StringSet(StringSet&& other) noexcept {
+			arrSize = other.arrSize;
+			strArr = other.strArr;
+			other.arrSize = 0;
+			other.strArr = nullptr;
+		}
+
+		StringSet& StringSet::operator=(StringSet&& other) noexcept {
+			if (this != &other) {
+				delete[] strArr;
+
+				arrSize = other.arrSize;
+				strArr = other.strArr;
+				other.arrSize = 0;
+				other.strArr = nullptr;
+			}
+			return *this;
+		}
+
 
 	}
 

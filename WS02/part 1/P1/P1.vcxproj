@@ -127,9 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\part 2\w2_p2.cpp" />
     <ClCompile Include="StringSet.cpp" />
     <ClCompile Include="TimedEvents.cpp" />
+    <ClCompile Include="w2_p1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringSet.h" />

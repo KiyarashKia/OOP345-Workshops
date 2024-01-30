@@ -21,7 +21,7 @@
     <ClCompile Include="StringSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\part 2\w2_p2.cpp">
+    <ClCompile Include="w2_p1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
