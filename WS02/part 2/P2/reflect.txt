@@ -1,0 +1,33 @@
+/***********************************************************************
+// OOP345 Workshop # 2 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 2 -
+Date : 01/30/2024
+ */
+
+This workshop was quite complex a bit to figure out some concepts as we were using somethings that were kind of new
+to me. Like chrono library, move operations, however after that I got some points that I mention:
+Using move operations can increase the pace and efficiency. As unlike copy operations that do a deep copy of the object
+and basically performing duplication, move operations can simply transfer the ownership of resources, like dynamically
+allocated memory fromm one object to another. Obviously I got that this process is way more efficient and faster.
+To refer, in my StringSet.cpp we can see how they actually perform and how simple they can do the job.
+Regarding my approach in reading the input file in the constructor, I set to read the file twice actually. first to count the
+words and then to populate the dynamic array with these words.
+Honestly I did not have much time to think about this part of the question but definitely I think there must be ways for that.
+About the last question, as mentioned earlier we were supposed to work with chrono library in this workshop that allows us
+to have actual time measurement. Regarding the difference between steady_clock and system_clock, it is obvious that
+the first one is the one that does not go backwards and cannot be affected by changes in system time.
+Unlike this, sys_clock can be adjusted. But generally I can say we use steady_clock to measure time intervals, and
+we use system_clock for getting the current time.
