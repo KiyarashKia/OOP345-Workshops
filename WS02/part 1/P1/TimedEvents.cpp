@@ -38,17 +38,22 @@ namespace seneca {
 		currentRecs++;
 	}
 
+	Event TimedEvents::operator[](int i) const {
+		return eventArr[i];
+	}
+
 	std::ostream& operator<<(std::ostream& os, const TimedEvents& events) {
-		os << "Execution Times:" << std::endl;
-		os << "--------------------------" << std::endl;
+		os << "--------------------------\nExecution Times:\n--------------------------\n";
 		for (int i = 0; i < events.currentRecs; i++) {
 			os << std::left << std::setw(21) << events.eventArr[i].eventName
 				<< std::right << std::setw(13) << events.eventArr[i].eventDuration.count()
-				<< " " << events.eventArr[i].unitTime << std::endl;
+				<< " " << events.eventArr[i].unitTime << '\n';
 		}
-		os << "--------------------------" << std::endl;
+		os << "--------------------------\n";
 		return os;
 	}
+
+
 
 
 }

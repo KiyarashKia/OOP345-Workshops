@@ -42,6 +42,7 @@ namespace seneca {
         void startClock();
         void stopClock();
         void addEvent(const char* newEvent);
+        Event operator [](int i) const;
         friend std::ostream& operator<<(std::ostream& out, const TimedEvents& events);
     };
 
