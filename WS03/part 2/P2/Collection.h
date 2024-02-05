@@ -85,7 +85,8 @@ namespace seneca {
 	};
 	template<typename T, unsigned int Capacity>
 	T Collection<T, Capacity>::dummy{};
-	
+	template<>
+	Pair Collection<Pair, 100>::dummy{ "No Key" ,"No Value" };
 #endif // !SENECA_COLLECTION_H
 }
 
