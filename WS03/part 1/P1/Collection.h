@@ -22,7 +22,7 @@ namespace seneca {
 
 		void display(std::ostream& os = std::cout) const { // setting os to std::cout by default for more comfort of use.
 			os << "----------------------\n| Collection Content |\n----------------------\n";
-			for (auto i = 0; i < m_size ; ++i) {
+			for (size_t i = 0; i < m_size ; ++i) {
 				os << items[i] << std::endl;
 			}
 			os << "----------------------\n";
