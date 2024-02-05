@@ -16,3 +16,9 @@ Email: kkia2@myseneca.ca
 Workshop 3
 Date : 02/04/2024
  */
+
+This workshop was suffering for me honestly. As mentioned in the description of the workshop, we had to deal with some only header files which I understand that matches with the nature of templates and was dealing with that was necessary. So that made me do a lot of reading as well during the process. I concluded that templates in c++ are inherently inline. Splitting tempaletes definitions and declarations into separate files can lead to linker issues. By keeping the template definition within the header file, we unsure that the compiler has direct access to the entire template code when it is included and instantiated in different translation unitts.
+To fulfill the specific functional requirements, for instance, the add function in both the Collection and Set classes, I had to keep in mind that it was essential for allowing dynamic addition of elements while ensuring the uniqueness of elements in the Set class. So the specialization of templates for different data types must had been demonstrated. Another point to mention for this can be the demand for handling floating point comparisons for equality.
+These modules required a deep understanding of C++ and honestly i did not feel enough so I have to keep on with that as there are still confusion points.
+I could see the power of templates that was allowing us for customized behavior based on the type of data.
+
