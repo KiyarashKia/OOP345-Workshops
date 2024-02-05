@@ -1,5 +1,5 @@
 /***********************************************************************
-// Workshop 2 Part 1
+// Workshop 2 Part 2
 // Required Modules
 // File:
 // Version 1.0
@@ -16,32 +16,24 @@
 // -----------------------------------------------------------
 // Name                 Date            Reason
 ***********************************************************************/
-#pragma once
-#ifndef SENECA_PAIR_H
-#define SENECA_PAIR_H
-
 #include <iostream>
+#include <iomanip>
+#include "Pair.h"
+
 
 namespace seneca {
 
-	class Pair
-	{
 
-		std::string m_key{};
-		std::string m_value{};
-	public:
-		Pair();
-		const std::string& getKey() { return m_key; }
-		const std::string& getValue() { return m_value; }
-		Pair(const std::string& key, const std::string& value) : m_key{ key }, m_value{ value } {};
+    Pair::Pair() : m_key(""), m_value("") {}
 
-		bool operator==(const Pair& other) const;
-		friend std::ostream& operator<<(std::ostream& os, const Pair& pair);
+    bool Pair::operator==(const Pair& other) const {
+        return m_key == other.m_key;
+    }
 
-	};
 
+    std::ostream& operator<<(std::ostream& os, const Pair& pair) {
+        os << std::right << std::setw(20) << pair.m_key << ": " << pair.m_value;
+        return os;
+    }
 
 }
-
-
-#endif // !SENECA_PAIR_H

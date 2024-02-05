@@ -1,5 +1,5 @@
 /***********************************************************************
-// Workshop 2 Part 1
+// Workshop 2 Part 2
 // Required Modules 
 // File:
 // Version 1.0
@@ -37,21 +37,36 @@ namespace seneca {
 		unsigned int size() const {
 			return m_size;
 		}
-
-		void display(std::ostream& os = std::cout) const { // setting os to std::cout by default for more comfort of use.
-			os << "----------------------\n| Collection Content |\n----------------------\n";
-			for (size_t i = 0; i < m_size ; ++i) {
-				os << items[i] << std::endl;
+		void display() {
+			std::cout << "----------------------" << "\n";
+			std::cout << "| Collection Content |" << "\n";
+			std::cout << "----------------------" << "\n";
+			for (unsigned int i = 0; i < m_size; i++) {
+				std::cout << items[i] << "\n";
 			}
-			os << "----------------------\n";
+			std::cout << "----------------------" << "\n";
+		}
+		void display(std::ostream& ostr) {
+			ostr << "----------------------" << "\n";
+			ostr << "| Collection Content |" << "\n";
+			ostr << "----------------------" << "\n";
+			for (unsigned int i = 0; i < m_size; i++) {
+				ostr << items[i] << "\n";
+			}
+			ostr << "----------------------" << "\n";
 		}
 
 		virtual bool add(const T& item) {
 			if (m_size < CAPACITY) {
-				items[m_size++] = item;
+				items[m_size] = item;
+				m_size++;
 				return true;
 			}
-			return false;
+			else
+			{
+				return false;
+			}
+		
 		}
 
 		T operator[](unsigned int index) const {
@@ -65,11 +80,12 @@ namespace seneca {
 			}
 
 		};
+
+		virtual ~Collection() {};
 	};
 	template<typename T, unsigned int Capacity>
 	T Collection<T, Capacity>::dummy{};
-	template<>
-	Pair Collection<Pair, 100>::dummy = Pair("No Key", "No Value");
+	
 #endif // !SENECA_COLLECTION_H
 }
 

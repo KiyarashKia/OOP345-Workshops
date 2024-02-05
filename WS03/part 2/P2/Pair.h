@@ -1,5 +1,5 @@
 /***********************************************************************
-// Workshop 2 Part 1
+// Workshop 2 Part 2
 // Required Modules
 // File:
 // Version 1.0
