@@ -21,6 +21,17 @@ namespace seneca {
         other.numToys = 0;
     }
 
+    ConfirmOrder& ConfirmOrder::operator=(ConfirmOrder&& other) noexcept {
+        if (this != &other) {
+            delete[] toys;
+            toys = other.toys;
+            numToys = other.numToys;
+            other.toys = nullptr;
+            other.numToys = 0;
+        }
+        return *this;
+    }
+
     ConfirmOrder& ConfirmOrder::operator=(const ConfirmOrder& other) {
         if (this != &other) {
             delete[] toys;
@@ -29,17 +40,6 @@ namespace seneca {
             for (size_t i = 0; i < other.numToys; ++i) {
                 toys[i] = other.toys[i];
             }
-        }
-        return *this;
-    }
-
-    ConfirmOrder& ConfirmOrder::operator=(ConfirmOrder&& other) noexcept {
-        if (this != &other) {
-            delete[] toys;
-            toys = other.toys;
-            numToys = other.numToys;
-            other.toys = nullptr;
-            other.numToys = 0;
         }
         return *this;
     }
@@ -64,19 +64,14 @@ namespace seneca {
     }
 
     ConfirmOrder& ConfirmOrder::operator-=(const Toy& toy) {
-        size_t index = numToys;
         for (size_t i = 0; i < numToys; ++i) {
             if (toys[i] == &toy) {
-                index = i;
-                break;
+                for (size_t j = i; j < numToys - 1; ++j) {
+                    toys[j] = toys[j + 1];
+                }
+                numToys--;
+                return *this;
             }
-        }
-
-        if (index < numToys) {
-            for (size_t j = index; j < numToys - 1; ++j) {
-                toys[j] = toys[j + 1];
-            }
-            resize(numToys - 1);
         }
         return *this;
     }

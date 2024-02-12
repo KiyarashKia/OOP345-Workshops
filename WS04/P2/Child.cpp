@@ -35,6 +35,7 @@ namespace seneca {
 
 		other.toys = nullptr;
 		other.numToys = 0;
+		other.childAge = 0;
 	}
 
 	Child::Child(const Child& other)
@@ -71,6 +72,7 @@ namespace seneca {
 
 			other.toys = nullptr;
 			other.numToys = 0;
+			other.childAge = 0;
 		}
 		return *this;
 	}
@@ -86,7 +88,7 @@ namespace seneca {
 		}
 		else {
 			for (size_t i = 0; i < child.numToys; ++i) {
-				os << *child.toys[i] << "\n";
+				os << *child.toys[i];
 			}
 			os << "--------------------------\n";
 		}
