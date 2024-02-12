@@ -1,0 +1,25 @@
+/***********************************************************************
+// OOP345 Workshop # 4 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 4
+Date : 02/11/2024
+ */
+
+
+This workshop was a fair practice to understand the concept of rule of 5. However it was not mentioned directly in the description.
+The difference between composition and aggregation in this workshop as I could see and show is the two ways a class can be related to another class. To take Child and Confirm ORder classes as example that are both fril toy type, I could see that the child class has its own of the toy objects. when a child project is created or copied, it makes its own copes of the toy objects and is responsible for them until the child object is gone. This is shown by how it makes new toy objects when copying and deletes them when the child object is deleted.
+On the other hand, the confirm order class is more like it just knows about the toy objects  but does not own them. It has pointers to toy objects but does not make or delete these toy objects. When confirm order objects are moved or copied, they just pass along the pointers to the toy objects without making new ones, showing that it does not take responsibility for the toy objects lives.
+
+So basically, in the Child class, copying or moving involes making new toy objects or making sure they are properly deleted, which shows it owns the toys. In the confirm order class, copying or moving is just about moving pointers around, showing it does not own the toys but just uses them.
