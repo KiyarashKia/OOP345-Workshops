@@ -18,9 +18,11 @@ namespace seneca {
         ConfirmOrder(ConfirmOrder&& other) noexcept; // Move constructor
         ConfirmOrder& operator=(const ConfirmOrder& other); // Copy assignment operator
         ConfirmOrder& operator=(ConfirmOrder&& other) noexcept; // Move assignment operator
-
         ConfirmOrder& operator+=(const Toy& toy); // Adding a toy
         ConfirmOrder& operator-=(const Toy& toy); // Removes a toy
+
+
+        void resize(size_t newSize);
 
         friend std::ostream& operator<<(std::ostream& os, const ConfirmOrder& order);
 
