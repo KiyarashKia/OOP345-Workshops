@@ -8,17 +8,29 @@ namespace seneca {
     
     ConfirmOrder::ConfirmOrder(const ConfirmOrder& other) : toys(nullptr), numToys(other.numToys) {
         if (other.numToys > 0) {
-            toys = new const Toy * [other.numToys];
+            toys = new const Toy*[other.numToys];
             for (size_t i = 0; i < other.numToys; ++i) {
                 toys[i] = other.toys[i];
             }
         }
     }
 
-    ConfirmOrder::ConfirmOrder(ConfirmOrder&& other) noexcept
+    ConfirmOrder::ConfirmOrder(ConfirmOrder&& other) noexcept 
         : toys(other.toys), numToys(other.numToys) {
         other.toys = nullptr;
         other.numToys = 0;
+    }
+
+    ConfirmOrder& ConfirmOrder::operator=(const ConfirmOrder& other) {
+        if (this != &other) {
+            delete[] toys;
+            numToys = other.numToys;
+            toys = new const Toy*[other.numToys];
+            for (size_t i = 0; i < other.numToys; ++i) {
+                toys[i] = other.toys[i];
+            }
+        }
+        return *this;
     }
 
     ConfirmOrder& ConfirmOrder::operator=(ConfirmOrder&& other) noexcept {
@@ -32,20 +44,8 @@ namespace seneca {
         return *this;
     }
 
-    ConfirmOrder& ConfirmOrder::operator=(const ConfirmOrder& other) {
-        if (this != &other) {
-            delete[] toys;
-            numToys = other.numToys;
-            toys = new const Toy * [other.numToys];
-            for (size_t i = 0; i < other.numToys; ++i) {
-                toys[i] = other.toys[i];
-            }
-        }
-        return *this;
-    }
-
     void ConfirmOrder::resize(size_t newSize) {
-        const Toy** newToys = new const Toy * [newSize];
+        const Toy** newToys = new const Toy*[newSize];
         for (size_t i = 0; i < numToys && i < newSize; ++i) {
             newToys[i] = toys[i];
         }
@@ -64,14 +64,19 @@ namespace seneca {
     }
 
     ConfirmOrder& ConfirmOrder::operator-=(const Toy& toy) {
+        size_t index = numToys;
         for (size_t i = 0; i < numToys; ++i) {
             if (toys[i] == &toy) {
-                for (size_t j = i; j < numToys - 1; ++j) {
-                    toys[j] = toys[j + 1];
-                }
-                numToys--;
-                return *this;
+                index = i;
+                break;
             }
+        }
+
+        if (index < numToys) {
+            for (size_t j = index; j < numToys - 1; ++j) {
+                toys[j] = toys[j + 1];
+            }
+            resize(numToys - 1);
         }
         return *this;
     }
@@ -83,7 +88,7 @@ namespace seneca {
         }
         else {
             for (size_t i = 0; i < order.numToys; ++i) {
-                os << *(order.toys[i]) << "\n";
+                os << *(order.toys[i]);
             }
         }
         os << "--------------------------\n";

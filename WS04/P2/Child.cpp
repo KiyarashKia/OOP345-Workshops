@@ -84,7 +84,8 @@ namespace seneca {
 			<< "Child " << callCount << ": " << child.childName << " " << child.childAge << " years old:\n"
 			<< "--------------------------\n";
 		if (child.numToys == 0) {
-			os << "This child has no toys!\n";
+			os << "This child has no toys!\n"
+			<< "--------------------------\n";
 		}
 		else {
 			for (size_t i = 0; i < child.numToys; ++i) {
