@@ -6,7 +6,7 @@ namespace seneca {
 
     ConfirmOrder::~ConfirmOrder() { delete[] toys; }
     
-    ConfirmOrder::ConfirmOrder(const ConfirmOrder& other) : numToys(other.numToys), toys(nullptr) {
+    ConfirmOrder::ConfirmOrder(const ConfirmOrder& other) : toys(nullptr), numToys(other.numToys) {
         if (other.numToys > 0) {
             toys = new const Toy * [other.numToys];
             for (size_t i = 0; i < other.numToys; ++i) {

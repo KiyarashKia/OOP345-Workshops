@@ -2,8 +2,7 @@
 #include "Child.h"
 
 namespace seneca {
-	static size_t CALL_CNT = 0;
-
+	
 	void Child::copyToys(const Toy* source[], size_t count) { // To do deep copying for each of the toys
 		toys = new const Toy * [count];
 		for (size_t i = 0; i < count; ++i) {
