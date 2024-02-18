@@ -59,12 +59,3 @@ namespace seneca {
 
 
 }
-
-/*
-Book(const std::string& strBook): a constructor that receives a reference to an unmodifiable string that contains information about the book;
-this constructor extracts the information about the book from the string by parsing it and stores the tokens in the object's attributes. 
-The string always has the following format:
-
-AUTHOR,TITLE,COUNTRY,PRICE,YEAR,DESCRIPTION
-
-*/

@@ -10,7 +10,7 @@ namespace seneca {
 		std::string author;
 		std::string bookTitle;
 		std::string pubCountry;
-		unsigned int pubYear;
+		size_t pubYear;
 		double bookPrice;
 		std::string desc;
 
