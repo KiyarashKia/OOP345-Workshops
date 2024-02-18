@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 			exit(static_cast<int>(AppErrors::CannotOpenFile));
 		}
 
-		int count = 0;
+		size_t count = 0;
 		std::string line;
 		while (std::getline(file, line) && count < size) {
 			if (!line.empty() && line[0] != '#') {
