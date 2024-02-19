@@ -1,0 +1,25 @@
+/***********************************************************************
+// OOP345 Workshop #5 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 5
+Date : 02/18/2024
+ */
+
+This workshop was long and became more and more challenging gradually for me.
+This time I was supposed to design a templated class (Collection), to show how dynamic memory management can be done by the class
+through allocation and deallocation of memory space for storing elements. I used a function object (SPellChecker) , to check spelling as described in the workshop documentation.
+Also I can kind of talking regarding the difference between using functors and lambda expressions. The functor encapsulates state for repeated actions, but the lambda I coded for price adjustment was short and 
+a tool that I could get benefit of it once. So lamda I can say is more suitable for tasks with no need for state in them. I faced also some issues concerning exceptions, like in the spell checker constructor, where it needed to ensure file existence and the validity of the format. This exercise expected us to have a proper error handling approach and specifying exception types to be used to point to different error 
+conditions. Regarding the two classes of Book and Movie; they were quite close and to me seemed very similar. However they had their own challenges and differences as well. But I tried to improve code reusability wherever I could.
