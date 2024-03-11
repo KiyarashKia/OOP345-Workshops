@@ -4,8 +4,6 @@
 #include <iomanip>
 
 
-
-
 namespace seneca {
 
 
@@ -78,7 +76,7 @@ namespace seneca {
 	}
 
 	void Employee::display(std::ostream& out) const {
-		out << std::left << "| " << std::setw(10) << "EMPLOYEE"
+		out << std::left << "| " << std::setw(10) << "Employee"
 			<< " | " << std::setw(10) << m_id
 			<< " | " << std::setw(20) << m_name
 			<< " | " << std::setw(3) << m_age << " |" << std::endl;

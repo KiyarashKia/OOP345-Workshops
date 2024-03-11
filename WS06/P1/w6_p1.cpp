@@ -17,16 +17,19 @@ void loadData(const char* filename, seneca::College& theCollege)
 		return;
 	}
 	seneca::Person* thePerson = nullptr;
-	while (file)
-	{
-		// TODO: This code can throw errors to signal that something 
-		//         went wrong while extracting data. Write code to catch
-		//         and handle the exceptions.
-		thePerson = seneca::buildInstance(file);
-		if (thePerson)
-			theCollege += thePerson;
+	while (file) {
+		try {
+			thePerson = seneca::buildInstance(file);
+			if (thePerson) {
+				theCollege += thePerson;
+			}
+		}
+		catch (const std::exception& e) {
+			std::cerr << e.what() << '\n';
+		}
 	}
 }
+
 
 
 int main(int argc, char** argv)
