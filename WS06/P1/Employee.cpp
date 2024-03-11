@@ -75,12 +75,11 @@ namespace seneca {
 		return m_id;
 	}
 
-	void Employee::display(std::ostream& out) const {
-		out << std::left << "| " << std::setw(10) << "Employee"
-			<< " | " << std::setw(10) << m_id
-			<< " | " << std::setw(20) << m_name
-			<< " | " << std::setw(3) << m_age << " |" << std::endl;
-	}
+	void Employee::display(std::ostream& out) const { 
+		out << std::left << "| " << std::setw(10) << "Employee" 
+			<< "| " << std::setw(10) << m_id 
+			<< "| " << std::setw(20) << m_name 
+			<< " | " << std::setw(3) << m_age << " |" << std::endl; }
 
 
 }
