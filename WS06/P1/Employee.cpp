@@ -44,7 +44,7 @@ namespace seneca {
 		ageStr = trim(ageStr);
 		id = trim(id);
 
-		if(tag != "e" && tag != "E" || id.empty() || id[0] != 'E') {
+		if ((tag != "e" && tag != "E") || id.empty() || id[0] != 'E') {
 			throw std::invalid_argument(name + "++Invalid record!");
 		}
 		
