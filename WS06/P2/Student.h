@@ -10,7 +10,7 @@ namespace seneca
     {
         std::string m_name;
         std::string m_id;
-        size_t m_age;
+        size_t m_age{};
         std::string* m_courses{};
         size_t m_count{};
 

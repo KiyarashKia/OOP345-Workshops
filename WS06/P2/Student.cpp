@@ -1,44 +1,66 @@
 #include "Student.h"
 #include "Utilities.h"
-#include <sstream>
-#include <vector>
 #include <iomanip>
 
 namespace seneca {
 
-    Student::Student(std::istream& is) {
-        std::string line;
-        if (std::getline(is, line)) {
-            std::istringstream record(line);
-            std::string temp, courses;
-            size_t num_courses = 0;
+    Student::Student(std::istream& is) : m_age(0), m_courses(nullptr), m_count(0)
+    {
+        std::getline(is, m_name, ',');
+        trim(m_name);
 
+        if (!(is >> m_age))
+        {
+            is.clear();
+            is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            throw std::invalid_argument(m_name + "++Invalid record!");
+        }
+        is.ignore(256, ',');
 
-            std::getline(record, temp, ',');
-            std::getline(record, m_name, ',');
-            trim(m_name);
+        char c = is.peek();
+        while (c != ',' && c != '\n')
+        {
+            m_id += c;
+            is.ignore();
+            c = is.peek();
+        }
 
-            std::getline(record, temp, ',');
-            trim(temp);
-            m_age = std::stoi(temp);
+        trim(m_id);
+        if (m_id[0] != 'S')
+        {
+            is.clear();
+            is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            throw std::invalid_argument(m_name + "++Invalid record!");
+        }
+        is.ignore(std::numeric_limits<std::streamsize>::max(), ',');
 
-            std::getline(record, m_id, ',');
-            trim(m_id);
+        if (!(is >> m_count))
+        {
+            is.clear();
+            is.ignore(256, '\n');
+            throw std::invalid_argument(m_name + "++Invalid record!");
+        }
+        is.ignore(std::numeric_limits<std::streamsize>::max(), ',');
 
-            std::getline(record, temp, ',');
-            trim(temp);
-            num_courses = std::stoi(temp); 
+        m_courses = new std::string[m_count];
 
-            m_courses = new std::string[num_courses];
-            m_count = num_courses;
-
-            for (size_t i = 0; i < num_courses; ++i) {
-                if (!std::getline(record, courses, ',')) break;
-                trim(courses);
-                m_courses[i] = courses;
+        for (size_t i = 0; i < m_count; i++)
+        {
+            std::string course;
+            if (i == m_count - 1)
+            {
+                std::getline(is, course);
             }
+            else
+            {
+                std::getline(is, course, ',');
+            }
+
+            trim(course);
+            m_courses[i] = course;
         }
     }
+    
 
     Student::~Student() {
         delete[] m_courses;
@@ -60,17 +82,18 @@ namespace seneca {
         return m_id;
     }
 
-    void Student::display(std::ostream& out) const {
-        out << "| " << std::left << std::setw(10) << "Student"
-            << "| " << std::setw(10) << m_id
-            << "| " << std::setw(20) << m_name
-            << "| " << std::setw(3) << m_age
-            << "| ";
-        for (size_t i = 0; i < m_count; ++i) {
+    void Student::display(std::ostream& out) const
+    {
+        out << std::left << "| " << std::setw(10) << "Student";
+        out << "| " << std::setw(10) << m_id;
+        out << "| " << std::setw(20) << m_name;
+        out << " | " << std::setw(3) << m_age << " |";
+        for (size_t i = 0; i < m_count; i++)
+        {
             out << m_courses[i];
-            if (i < m_count - 1) out << ", ";
+            if (i != m_count - 1)
+                out << ", ";
         }
-        out << " |" << std::endl;
     }
 
 
