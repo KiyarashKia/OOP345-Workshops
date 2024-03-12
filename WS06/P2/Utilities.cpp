@@ -21,6 +21,27 @@ namespace seneca {
             std::getline(in, line);
             return nullptr;
         }
+
+    }
+
+    void trim(std::string& str) {
+        if (str.empty()) return;
+
+        // Left trim
+        size_t firstNotOf = str.find_first_not_of(' ');
+        if (firstNotOf != std::string::npos) {
+            str.erase(0, firstNotOf);
+        }
+        else {
+            str.clear();
+            return;
+        }
+
+        // Right trim
+        size_t lastNotOf = str.find_last_not_of(' ');
+        if (lastNotOf != std::string::npos) {
+            str.erase(lastNotOf + 1);
+        }
     }
 
 }

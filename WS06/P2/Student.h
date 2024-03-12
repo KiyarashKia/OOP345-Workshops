@@ -25,6 +25,10 @@ namespace seneca
         std::string id() const;
 
         void display(std::ostream& out) const;
+    
+    // Disabling Copy operations
+        Student(const Student& other) = delete;
+        Student& operator=(const Student& other) = delete;
     };
 
 }

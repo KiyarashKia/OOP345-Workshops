@@ -1,4 +1,5 @@
 #include "Employee.h"
+#include "Utilities.h"
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -7,15 +8,6 @@
 namespace seneca {
 
 
-	std::string Employee::trim(const std::string& str) {
-		size_t first = str.find_first_not_of(' ');
-		if (std::string::npos == first)
-		{
-			return str;
-		}
-		size_t last = str.find_last_not_of(' ');
-		return str.substr(first, (last - first + 1));
-	}
 
 	Employee::Employee(std::istream& input) {
 		std::string line;
@@ -40,9 +32,10 @@ namespace seneca {
 		// last part of the string as ID
 		std::string id = line.substr(startPos);
 
-		name = trim(name);
-		ageStr = trim(ageStr);
-		id = trim(id);
+       trim(name);
+       trim(ageStr);
+       (id);
+
 
 		if ((tag != "e" && tag != "E") || id.empty() || id[0] != 'E') {
 			throw std::invalid_argument(name + "++Invalid record!");

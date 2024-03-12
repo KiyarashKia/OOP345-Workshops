@@ -129,6 +129,8 @@
   <ItemGroup>
     <ClCompile Include="College.cpp" />
     <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="Professor.cpp" />
+    <ClCompile Include="Student.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="w6_p2.cpp" />
   </ItemGroup>

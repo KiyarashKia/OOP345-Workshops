@@ -19,12 +19,16 @@ void loadData(const char* filename, seneca::College& theCollege)
 	seneca::Person* thePerson = nullptr;
 	while (file)
 	{
-		// TODO: This code can throw errors to signal that something 
-		//         went wrong while extracting data. Write code to catch
-		//         and handle the exceptions:
-		thePerson = seneca::buildInstance(file);
-		if (thePerson)
-			theCollege += thePerson;
+		try
+		{
+			thePerson = seneca::buildInstance(file);
+			if (thePerson)
+				theCollege += thePerson;
+		}
+		catch (const std::invalid_argument& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 	}
 }
 
@@ -45,7 +49,10 @@ int main(int argc, char** argv)
 	{
 		// TODO: Create a lambda expression that receives as parameter `const seneca::Person*`
 		//         and returns true if the person is student.
-		auto students = ...;
+		auto students = [](const seneca::Person* person)
+			{
+				return person->status() == std::string("Student");
+			};
 		theCollege.select(students, persons);
 	
 		std::cout << "|                                        Test #3 Students in the college!                                              |\n";
@@ -62,7 +69,10 @@ int main(int argc, char** argv)
 	{
 		// TODO: Create a lambda expression that receives as parameter `const seneca::Person*`
 		//         and returns true if the person is professor.
-		auto professors = ... ;
+		auto professors = [](const seneca::Person* person)
+			{
+				return person->status() == std::string("Professor");
+			};
 		theCollege.select(professors, persons);
 	
 		std::cout << "|                                        Test #4 Professors in the college!                                            |\n";

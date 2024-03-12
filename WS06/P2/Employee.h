@@ -12,9 +12,6 @@ namespace seneca {
 		int m_age;
 		std::string m_id;
 
-		//Trimmer function
-		static std::string trim(const std::string& str);
-
 
 	public:
 		Employee(std::istream& in);
