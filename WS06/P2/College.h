@@ -2,6 +2,7 @@
 #define SENECA_COLLEGE_H
 #include <iostream>
 #include <vector>
+#include <list>
 #include "Person.h"
 
 
@@ -25,6 +26,15 @@ namespace seneca {
 		College& operator+=(Person* PersontoAdd);
 
 		void display(std::ostream& out) const;
+
+		template<typename T>
+		void select(const T& test, std::list<const Person*>& persons) const {
+			for (const auto& person : m_persons) {
+				if (test(person)) {
+					persons.push_back(person);
+				}
+			}
+		}
 
 	};
 

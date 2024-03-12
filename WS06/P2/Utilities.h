@@ -8,7 +8,7 @@
 
 namespace seneca {
 	Person* buildInstance(std::istream& in);
-
+	void trim(std::string& str);
 }
 
 
