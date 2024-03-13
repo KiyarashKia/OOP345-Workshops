@@ -1,0 +1,30 @@
+/***********************************************************************
+// OOP345 Workshop #6 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 6
+Date : 03/12/2024
+ */
+
+During this workshop I found the opportunity mainly to go through dynamic memory management and vectors, also exception handling and 
+data structure. To refer one of them in my code, I had to take care of allocation and deallocation of array of coursenames in Student destructor to ensure
+the efficiency of the resources and releasing it when we do not need that part anymore. Thus this practice again emphasized on
+efficiency and prevention of memory leaks.
+Handling errors and mistakes of input and unexpected situations was another area of focus. The buildinstance in Utilities shows how different error scenarios are managed, 
+such as unknown person types or invalid data. Instead of relying on returning nullptr for error indication.
+A challenge I faced was the choice between storing pointers std::list<seneca::Person*> and std::vector<seneca::Person*> versus 
+direct objects, std::list<seneca::Person> and std::vector<seneca::Person>. Here considering the polymorphic behavior of the Person hierarchy, using
+pointers allowed for dynamic form of polymorphism, where methods of derived classes could be invoked correctly depending on the objects'' actual type. This decision as I searched
+highlights the importance of understanding c++ memory model and polymorphism to manage resources effectively and have the most benefits of 
+inheritance.
