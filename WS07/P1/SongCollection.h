@@ -7,8 +7,8 @@ Authenticity Declaration :
 I have done all the coding by myself and only copied the code that my
 professor provided to complete my workshops and assignments.
 ***************************************************************************/
-#ifndef SDDS_SONGCOLLECTION_H
-#define SDDS_SONGCOLLECTION_H
+#ifndef SENECA_SONGCOLLECTION_H
+#define SENECA_SONGCOLLECTION_H
 
 #include "Song.h"
 #include <vector>
@@ -26,4 +26,4 @@ namespace seneca {
 
 }
 
-#endif // SDDS_SONGCOLLECTION_H
+#endif // SENECA_SONGCOLLECTION_H

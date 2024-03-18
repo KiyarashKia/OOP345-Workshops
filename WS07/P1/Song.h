@@ -7,8 +7,8 @@ Authenticity Declaration :
 I have done all the coding by myself and only copied the code that my
 professor provided to complete my workshops and assignments.
 ***************************************************************************/
-#ifndef SDDS_SONG_H
-#define SDDS_SONG_H
+#ifndef SENECA_SONG_H
+#define SENECA_SONG_H
 
 #include <iostream>
 #include <string>
@@ -29,4 +29,4 @@ namespace seneca {
 
 }
 
-#endif // SDDS_SONG_H
+#endif // SENECA_SONG_H
