@@ -82,9 +82,9 @@ namespace seneca {
         int sec = totalLength % 60;
         out << "----------------------------------------------------------------------------------------\n";
         out << "|                                                        Total Listening Time:";
-        out << std::setw(2) << hour << ":";
-        out << std::setw(2) << std::setfill('0') << min << ":";
-        out << std::setw(2) << std::setfill('0') << sec << " |\n";
+        out << std::setw(2) << hour << ":"
+            << std::setw(2) << std::setfill('0') << min << ":"
+            << std::setw(2) << std::setfill('0') << sec << " |\n";
         out << std::setfill(' ');
     }
 
