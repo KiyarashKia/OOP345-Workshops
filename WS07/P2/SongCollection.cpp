@@ -75,11 +75,14 @@ namespace seneca {
         std::for_each(songs.begin(), songs.end(), [&out](const Song& song) {
             out << song << '\n';
             });
-        auto totalLength = std::accumulate(songs.begin(), songs.end(), static_cast<size_t>(0),
-            [](size_t sum, const Song& song) { return sum + song.length; });
+
+        auto totalLength = std::accumulate(songs.begin(), songs.end(), 0,
+            [](int sum, const Song& song) { return sum + song.length; });
+
         int hour = totalLength / 3600;
         int min = (totalLength % 3600) / 60;
         int sec = totalLength % 60;
+
         out << "----------------------------------------------------------------------------------------\n";
         out << "|                                                        Total Listening Time:";
         out << std::setw(2) << hour << ":"
