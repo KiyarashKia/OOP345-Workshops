@@ -81,11 +81,11 @@ namespace seneca {
         int min = (totalLength % 3600) / 60;
         int sec = totalLength % 60;
         out << "----------------------------------------------------------------------------------------\n";
-        out << "|                                                        Total Listening Time:"
-            << std::setw(2) << std::setfill(' ') << hour << ":"
-            << std::setw(2) << std::setfill('0') << min << ":"
-            << std::setw(2) << std::setfill('0') << sec << " |\n";
-        out << "----------------------------------------------------------------------------------------\n";
+        out << "|                                                        Total Listening Time:";
+        out << std::setw(2) << hour << ":";
+        out << std::setw(2) << std::setfill('0') << min << ":";
+        out << std::setw(2) << std::setfill('0') << sec << " |\n";
+        out << std::setfill(' ');
     }
 
     void SongCollection::sort(const std::string& field) {
