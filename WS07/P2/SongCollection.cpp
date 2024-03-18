@@ -47,7 +47,7 @@ namespace seneca {
         int sec = theSong.length % 60;
         out << "| " << std::left << std::setw(20) << theSong.title
             << " | " << std::setw(15) << theSong.artist
-            << " | " << std::setw(20) << (theSong.album.empty() ? "[None]" : theSong.album)
+            << " | " << std::setw(20) << (theSong.album.empty() ? "" : theSong.album)
             << " | " << std::right << std::setw(6) << (theSong.releaseYear ? std::to_string(theSong.releaseYear) : "")
             << " | " << min << ":" << std::setfill('0') << std::setw(2) << sec
             << " | " << std::setfill(' ') << std::fixed << std::setprecision(2) << theSong.m_price
@@ -103,7 +103,7 @@ namespace seneca {
 
     void SongCollection::cleanAlbum() {
         std::for_each(songs.begin(), songs.end(), [](Song& song) {
-            if (song.album == "[None]") song.album = "";
+            if (song.album == "") song.album = "";
             });
     }
 
