@@ -16,19 +16,13 @@ professor provided to complete my workshops and assignments.
 
 namespace seneca {
 
-	class Song {
+    class SongCollection {
+        std::vector<Song> songs;
 
-		class SongCollection {
-			std::vector<Song> songs;
-
-		public:
-			SongCollection(const std::string& filename);
-			void display(std::ostream& out) const;
-
-	};
-
-
-	};
+    public:
+        SongCollection(const std::string& filename);
+        void display(std::ostream& out) const;
+    };
 
 }
 
