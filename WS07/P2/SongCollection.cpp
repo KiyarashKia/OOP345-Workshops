@@ -103,7 +103,7 @@ namespace seneca {
 
     void SongCollection::cleanAlbum() {
         std::for_each(songs.begin(), songs.end(), [](Song& song) {
-            if (song.album == "") song.album = "";
+            if (song.album == "[None]") song.album = "";
             });
     }
 

@@ -1,0 +1,27 @@
+/***********************************************************************
+// OOP345 Workshop #7 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 6
+Date : 03/17/2024
+ */
+
+In this workshop, I utilized some STL functions to have efficiency and ability in streamline, making it more readable and maintainable.
+To mention some, I used for_each to execute a function on each element in a collection. I chose it to display songs and cleaning album names because it makes code cleaner and also
+to meet the requirement of not handling the situation using loop.
+Second, i used sort to sort the elements in the container based on the criteria. In my case, I used to order songs by title, albom or length.
+Third, Accumulate, for summing the lengths of songs to calculate total listening time.
+and lastly, any_of and copy_if to check if any song in the collection matches a condition, and to copy elements that satisfy a condition into another container. These indicate that
+how using STL algorithms we ca filter data.
+The advantages of using STL over manual loops include improved readablity, reduced error potential and leveraging optimization within STL implementations.
