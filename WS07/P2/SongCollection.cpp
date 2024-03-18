@@ -43,11 +43,13 @@ namespace seneca {
 
   
     std::ostream& operator<<(std::ostream& out, const Song& theSong) {
+        int min = theSong.length / 60;
+        int sec = theSong.length % 60;
         out << "| " << std::left << std::setw(20) << theSong.title
             << " | " << std::setw(15) << theSong.artist
             << " | " << std::setw(20) << (theSong.album.empty() ? "[None]" : theSong.album)
             << " | " << std::right << std::setw(6) << (theSong.releaseYear ? std::to_string(theSong.releaseYear) : "")
-            << " | " << theSong.length / 60 << ":" << std::setfill('0') << std::setw(2) << theSong.length % 60
+            << " | " << min << ":" << std::setfill('0') << std::setw(2) << sec
             << " | " << std::setfill(' ') << std::fixed << std::setprecision(2) << theSong.m_price
             << " |";
         return out;
@@ -69,14 +71,21 @@ namespace seneca {
     }
 
     // Need adjustment as descriptionnn of ws
-    void SongCollection::display(std::ostream& out) const { 
+    void SongCollection::display(std::ostream& out) const {
         std::for_each(songs.begin(), songs.end(), [&out](const Song& song) {
             out << song << '\n';
             });
         auto totalLength = std::accumulate(songs.begin(), songs.end(), static_cast<size_t>(0),
             [](size_t sum, const Song& song) { return sum + song.length; });
-        out << "Total Listening Time: " << totalLength / 3600 << ":"
-            << (totalLength % 3600) / 60 << ":" << totalLength % 60 << '\n';
+        int hour = totalLength / 3600;
+        int min = (totalLength % 3600) / 60;
+        int sec = totalLength % 60;
+        out << "----------------------------------------------------------------------------------------\n";
+        out << "|                                                        Total Listening Time: "
+            << std::setw(2) << std::setfill(' ') << hour << ":"
+            << std::setw(2) << std::setfill('0') << min << ":"
+            << std::setw(2) << std::setfill('0') << sec << " |\n";
+        out << "----------------------------------------------------------------------------------------\n";
     }
 
     void SongCollection::sort(const std::string& field) {
