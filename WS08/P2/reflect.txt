@@ -1,0 +1,26 @@
+/***********************************************************************
+// OOP345 Workshop #8 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 8
+Date : 03/23/2024
+ */
+
+In this workshop, there was a focus on memory management and lifecycle management of objects in C++ I would say. In particular, during the development of the mergeRaw and mergeSmart
+functions. Also, the task of implementing the operators for both raw and smart pointers within the list class provided an opportunity that helped reinforce more practical understanding
+of these concepts. In details of utilities.cpp and list.h, the change from raw pointers to smart pointers, specifically to std::unique_ptr, in the mergeSmart function has really marked a big difference in 
+how I handle dynamic memory.
+Also, the implementation of a += operator on unique_ptr<T> in the List class wasnt seem possible without applying modern C++ features.
+The usage of the operator clearly indicated the benefits of smart pointers with regard to memory safety and also made the code much more clear and maintainable.
+This was really a nice learning experience workshop tgat shoed the importance of modern C++ practices in effective memory management.
