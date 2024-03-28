@@ -50,14 +50,18 @@ namespace seneca{
 
     void TreasureMap::enscribe(const char* filename){
         // Binary write
-        if (map){
-            // TODO: Open a binary file stream to the filename and
-            //         then write the row number to the binary file 
-            //         then each of the rows of the map.
-            //       If the file cannot be open, raise an exception to
-            //         inform the client.
+        std::ofstream outFile(filename, std::ios::binary);
+        if (!outFile) throw std::string(filename) + " cannot be opened";
 
-            // END TODO
+        if (map){
+            outFile.write(reinterpret_cast<const char*>(&rows), sizeof(rows));
+            outFile.write(reinterpret_cast<const char*>(&colSize), sizeof(colSize));
+            for (size_t i = 0; i < rows; ++i)
+            {
+                size_t length = map[i].length();
+                outFile.write(reinterpret_cast<const char*>(&length), sizeof(length));
+                outFile.write(map[i].c_str(), length);
+            }
         }
         else{
             throw std::string("Treasure map is empty!");
@@ -65,17 +69,28 @@ namespace seneca{
     }
 
     void TreasureMap::recall(const char* filename){
-        // Binary read
-        // TODO: Open a binary file stream to the filename
-        //         and read from it to populate the current object.
-        //       The first 4 bytes of the file will be the number of rows
-        //         for the map followed another 4 bytes for the colSize
-        //         of each row in the map.
-        //       Afterwards is each row of the map itself.
-        //       If the file cannot be open, raise an exception to inform
-        //         the client.
+        std::ifstream inFile(filename, std::ios::binary);
+        if (!inFile) throw std::string(filename) + " cannot be opened";
 
-        // END TODO
+        //clear();
+
+        inFile.read(reinterpret_cast<char*>(&rows), sizeof(rows));
+        inFile.read(reinterpret_cast<char*>(&colSize), sizeof(colSize));
+    
+        map = new std::string[rows];
+        for (size_t i = 0; i < rows; ++i)
+        {
+            size_t length{};
+
+            inFile.read(reinterpret_cast<char*>(&length), sizeof(length));
+
+            char* buffer = new char[length + 1];
+            inFile.read(buffer, length);
+
+            buffer[length] = '\0';
+            map[i] = std::string(buffer, length);
+            delete[] buffer;
+        }
     }
 
     void TreasureMap::clear(){
