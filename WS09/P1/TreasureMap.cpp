@@ -72,7 +72,7 @@ namespace seneca{
         std::ifstream inFile(filename, std::ios::binary);
         if (!inFile) throw std::string(filename) + " cannot be opened";
 
-        //clear();
+        clear();
 
         inFile.read(reinterpret_cast<char*>(&rows), sizeof(rows));
         inFile.read(reinterpret_cast<char*>(&colSize), sizeof(colSize));
