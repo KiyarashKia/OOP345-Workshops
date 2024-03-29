@@ -3,7 +3,6 @@
 #include <string>
 #include "TreasureMap.h"
 
-
 namespace seneca{
 
     size_t digForTreasure(const std::string& str, char mark){
@@ -60,9 +59,7 @@ namespace seneca{
           outFile.write(reinterpret_cast<const char*>(&colSize), sizeof(colSize));
             for (int i = 0; i < rows; ++i)
             {
-                int length = map[i].length();
-                outFile.write(reinterpret_cast<const char*>(&length), sizeof(length));
-                outFile.write(map[i].c_str(), length);
+                outFile.write(map[i].c_str(), map[i].length());
 
             }
         }
@@ -82,19 +79,14 @@ namespace seneca{
         inFile.read(reinterpret_cast<char*>(&colSize), sizeof(colSize));
     
         map = new std::string[rows];
-        for (int i = 0; i < rows; ++i)
-        {
-            int length{};
-
-            inFile.read(reinterpret_cast<char*>(&length), sizeof(length));
-
-            char* buffer = new char[length + 1];
-            inFile.read(buffer, length);
-
-            buffer[length] = '\0';
-            map[i] = std::string(buffer, length);
-            delete[] buffer;
+        char* buffer = new char[colSize + 1];
+        buffer[colSize] = '\0';
+        for (size_t i = 0; i < rows; ++i) {
+            inFile.read(buffer, colSize);
+            map[i] = std::string(buffer, colSize);
         }
+
+        delete[] buffer;
 
     }
 
