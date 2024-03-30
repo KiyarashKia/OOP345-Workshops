@@ -57,7 +57,7 @@ namespace seneca{
         if (map){ 
           outFile.write(reinterpret_cast<const char*>(&rows), sizeof(rows));
           outFile.write(reinterpret_cast<const char*>(&colSize), sizeof(colSize));
-            for (int i = 0; i < rows; ++i)
+            for (size_t i = 0; i < rows; ++i)
             {
                 outFile.write(map[i].c_str(), map[i].length());
 
