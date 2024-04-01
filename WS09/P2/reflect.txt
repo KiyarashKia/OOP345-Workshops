@@ -1,0 +1,26 @@
+/***********************************************************************
+// OOP345 Workshop #9 - Reflection
+//
+//
+// Description:
+//
+// Revision History
+// -----------------------------------------------------------
+// Name            Date            Reason
+/////////////////////////////////////////////////////////////////
+***********************************************************************/
+/*
+Student : Kiarash Kia
+Student ID: 108688235
+Email: kkia2@myseneca.ca
+Workshop 9
+Date : 03/31/2024
+*/
+
+In this workshop, binary files were in the crucial spot of the work. They demostrated their important advantages over traditional text files. Unlike text files which store data in a format that is easy to read by humans but less
+efficient for machine processing, binary files allow for storing data in a compact format directly understandable by the computer. This is why the process of storing and getting the treasure map is more efficient. By using binary files,
+we avoided the overhead of parsing textual data, resulting in quicker access times and reduced file size. This efficiency is beneficial also in applications where performance and storage efficiency is so important.
+Mentioning some parts of the work, using std::bin to bind a function to its arguments before execution in separate threads showed the importance of function binding in C++. This enabled us to pre-configure the difForTreasure function with speficif parts of the map for each thread.
+The advantages of employing multiple threads also were evident in the search for treasures within the map. By dividing the map into segments and assigning eash to a separate thread, the program could efficiently 
+work on multiple threads.
+Overall, this workshop served as a proper demnstration of the capabilities of binary file manipulation, function binding and multi-threading in C++. And by applying those techniques we could develop an effective solution for searching treasures within the map.
